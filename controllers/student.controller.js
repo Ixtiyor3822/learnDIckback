@@ -38,7 +38,21 @@ exports.createStudent = async(req,res) =>{
 
 exports.getStudents = async(req,res) =>{
     try {
-        const students = await (await Student.find()).reverse();
+        const students = await Student.find().reverse();
+        // console.log(students)
+    
+        res.status(200).json(students)
+    } catch (e) {
+        res.status(500).json({
+            error: e.message
+        })
+    }
+}
+
+exports.getStudent = async(req,res) =>{
+    try {
+        const email = req.params.email
+        const students = await  Student.findOne({email: email});
         // console.log(students)
     
         res.status(200).json(students)

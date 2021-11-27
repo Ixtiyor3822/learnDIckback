@@ -18,6 +18,7 @@ mongoose.connect(process.env.DB)
 app.use("/user", require("./routes/user.router"));
 app.use("/word", require("./routes/word.router"));
 app.use("/student", require("./routes/student.router"));
+app.use("/dick", require("./routes/studentTil.router"));
 
 app.use((req,res, next)=>{
     let error = new Error("Not Found");
